@@ -1,4 +1,4 @@
-package br.com.spotsales.utils.ui
+package br.com.spotsales.views.utils
 
 import android.content.Context
 import android.util.AttributeSet

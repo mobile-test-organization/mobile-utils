@@ -1,4 +1,4 @@
-package br.com.spotsales.utils.extensions
+package br.com.spotsales.views.extensions
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu

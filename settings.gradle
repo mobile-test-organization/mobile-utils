@@ -1,2 +1,2 @@
-include ':app', ':spotsales-utils'
+include ':app', ':spotsales-utils', ':spotsales-view-utils'
 rootProject.name='SpotSales Mobile Utils'

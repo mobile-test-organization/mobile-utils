@@ -1,4 +1,4 @@
-package br.com.spotsales.utils.ui
+package br.com.spotsales.views.utils
 
 import android.content.Context
 import android.os.Build
@@ -8,7 +8,7 @@ import android.text.TextWatcher
 import android.util.AttributeSet
 import android.util.Log
 import android.widget.EditText
-import br.com.spotsales.utils.R
+import br.com.spotsales.views.R
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.util.Currency

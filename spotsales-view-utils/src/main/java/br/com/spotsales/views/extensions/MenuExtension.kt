@@ -1,4 +1,4 @@
-package br.com.spotsales.utils.extensions
+package br.com.spotsales.views.extensions
 
 import android.view.Menu
 

@@ -1,4 +1,4 @@
-package br.com.spotsales.utils
+package br.com.spotsales.views
 
 import android.content.Context
 import android.os.IBinder
