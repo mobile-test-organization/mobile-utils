@@ -31,10 +31,11 @@ object JsonUtils {
         date ?: throw JsonParseException("Unparseable date: ${json.asString}")
     }
 
-    fun defaultFormatter(): Gson =
-        GsonBuilder()
-            .registerTypeAdapter(Date::class.java, dateSerializer)
-            .registerTypeAdapter(Date::class.java, dateDeserializer)
-            .setPrettyPrinting()
-            .create()
+    private val defaultFormatter: Gson = GsonBuilder()
+        .registerTypeAdapter(Date::class.java, dateSerializer)
+        .registerTypeAdapter(Date::class.java, dateDeserializer)
+        .setPrettyPrinting()
+        .create()
+
+    fun defaultFormatter(): Gson = defaultFormatter
 }
