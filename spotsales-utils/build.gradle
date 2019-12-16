@@ -2,7 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.mobbeel.plugin'
 
 group = 'org.bitbucket.spotsales'
 
@@ -43,14 +42,14 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.1.0'
 
     //Barcodes
-    api 'com.google.zxing:core:3.3.0'
+    implementation 'com.google.zxing:core:3.3.0'
 
     //Mask
-    api 'com.redmadrobot:inputmask:4.0.0'
+    implementation 'com.redmadrobot:inputmask:4.0.0'
 
     //Security
-    api 'org.mindrot:jbcrypt:0.3m'
-    api 'org.hashids:hashids:1.0.3'
+    implementation 'org.mindrot:jbcrypt:0.3m'
+    implementation 'org.hashids:hashids:1.0.3'
 
     //Parsers
     implementation 'com.google.code.gson:gson:2.8.6'
@@ -62,8 +61,4 @@ dependencies {
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-}
-
-aarPlugin {
-    includeAllInnerDependencies false
 }
