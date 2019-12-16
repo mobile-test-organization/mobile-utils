@@ -1,4 +1,4 @@
-package br.com.spotsales.spotsalesticket.utils
+package br.com.spotsales.utils
 
 import android.graphics.Bitmap
 import android.os.Environment
