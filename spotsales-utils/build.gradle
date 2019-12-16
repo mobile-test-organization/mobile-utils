@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.kezong.fat-aar'
 
 group = 'org.bitbucket.spotsales'
 
@@ -42,14 +43,14 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.1.0'
 
     //Barcodes
-    implementation 'com.google.zxing:core:3.3.0'
+    embed 'com.google.zxing:core:3.3.0'
 
     //Mask
-    implementation 'com.redmadrobot:inputmask:4.0.0'
+    embed 'com.redmadrobot:inputmask:4.0.0'
 
     //Security
-    implementation('org.mindrot:jbcrypt:0.3m') { transitive = true }
-    implementation 'org.hashids:hashids:1.0.3'
+    embed 'org.mindrot:jbcrypt:0.3m'
+    embed 'org.hashids:hashids:1.0.3'
 
     //Parsers
     implementation 'com.google.code.gson:gson:2.8.6'
