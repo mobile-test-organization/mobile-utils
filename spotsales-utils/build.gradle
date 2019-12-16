@@ -32,6 +32,10 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/MANIFEST.MF'
+    }
 }
 
 dependencies {
