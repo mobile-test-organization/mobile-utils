@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.kezong.fat-aar'
+apply plugin: 'com.mobbeel.plugin'
 
 group = 'org.bitbucket.spotsales'
 
@@ -32,11 +32,6 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
-
-    packagingOptions {
-        exclude '**/META-INF/MANIFEST.MF'
-        exclude 'META-INF/MANIFEST.MF'
-    }
 }
 
 dependencies {
@@ -48,20 +43,20 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.1.0'
 
     //Barcodes
-    embed 'com.google.zxing:core:3.3.0'
+    api 'com.google.zxing:core:3.3.0'
 
     //Mask
-    embed 'com.redmadrobot:inputmask:4.0.0'
+    api 'com.redmadrobot:inputmask:4.0.0'
 
     //Security
-    embed 'org.mindrot:jbcrypt:0.3m'
-    embed 'org.hashids:hashids:1.0.3'
+    api 'org.mindrot:jbcrypt:0.3m'
+    api 'org.hashids:hashids:1.0.3'
 
     //Parsers
     implementation 'com.google.code.gson:gson:2.8.6'
 
     //Fabric
-    implementation('com.crashlytics.sdk.android:crashlytics:2.9.5@aar') { transitive = true }
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1@aar'
 
     testImplementation 'junit:junit:4.12'
 
