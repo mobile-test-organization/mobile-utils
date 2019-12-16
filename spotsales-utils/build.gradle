@@ -35,6 +35,7 @@ android {
 
     packagingOptions {
         exclude '**/META-INF/MANIFEST.MF'
+        exclude 'META-INF/MANIFEST.MF'
     }
 }
 
