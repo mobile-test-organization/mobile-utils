@@ -15,13 +15,13 @@ object SecurityUtils {
     fun hashidsDecode(code: String, salt: String): String {
         val hashids = Hashids(salt)
         val result = hashids.decode(code)
-        val decodedBytes = ByteArray(result.size)
+        val decodedBytes = result.map { d -> d.toByte() }
 
-        decodedBytes.indices.forEach { i ->
-            decodedBytes[i] = result[i].toByte()
+        decodedBytes.forEach { a ->
+            print(String(listOf(a).toByteArray()))
         }
 
-        return String(decodedBytes)
+        return String(decodedBytes.toByteArray())
     }
 
     fun bcryptEncode(password: String, salt: String): String = BCrypt.hashpw(password, salt)
