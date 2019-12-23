@@ -2,6 +2,7 @@ package br.com.spotsales.utils
 
 import org.hashids.Hashids
 import org.mindrot.jbcrypt.BCrypt
+import java.nio.ByteBuffer
 import java.util.*
 
 object SecurityUtils {
@@ -15,13 +16,11 @@ object SecurityUtils {
     fun hashidsDecode(code: String, salt: String): String {
         val hashids = Hashids(salt)
         val result = hashids.decode(code)
-        val decodedBytes = result.map { d -> d.toByte() }
+        val bytes = ByteArray(result.size)
 
-        decodedBytes.forEach { a ->
-            print(String(listOf(a).toByteArray()))
-        }
+        (result.indices).forEach { bytes[it] = result[it].toByte() }
 
-        return String(decodedBytes.toByteArray())
+        return bytes.toString(Charsets.UTF_8)
     }
 
     fun bcryptEncode(password: String, salt: String): String = BCrypt.hashpw(password, salt)
