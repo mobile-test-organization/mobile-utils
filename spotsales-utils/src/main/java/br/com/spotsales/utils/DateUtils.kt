@@ -23,6 +23,11 @@ object DateUtils {
         return Date()
     }
 
+    fun getDateTimeZone(date: Date): String {
+        val outFormat = SimpleDateFormat("X")
+        return outFormat.format(date)
+    }
+
     fun getDateString(date: Date): String {
         val outFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
         return outFormat.format(date)
