@@ -24,7 +24,7 @@ object DateUtils {
     }
 
     fun getDateTimeZone(date: Date): String {
-        val outFormat = SimpleDateFormat("X")
+        val outFormat = SimpleDateFormat("Z")
         return outFormat.format(date)
     }
 
