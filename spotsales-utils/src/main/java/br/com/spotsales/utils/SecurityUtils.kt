@@ -1,6 +1,7 @@
 package br.com.spotsales.utils
 
 import android.util.Base64
+import android.util.Log
 import com.crashlytics.android.Crashlytics
 import org.hashids.Hashids
 import org.mindrot.jbcrypt.BCrypt
@@ -45,6 +46,7 @@ object SecurityUtils {
 
             return Base64.encodeToString(textBytes, Base64.DEFAULT)
         } catch (ex: Exception) {
+            ex.printStackTrace()
             Crashlytics.logException(ex)
         }
 
@@ -63,6 +65,7 @@ object SecurityUtils {
 
             return textBytes.toString(Charsets.UTF_8)
         } catch (ex: Exception) {
+            ex.printStackTrace()
             Crashlytics.logException(ex)
         }
 
