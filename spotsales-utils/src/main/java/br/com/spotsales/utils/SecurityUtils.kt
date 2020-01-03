@@ -1,8 +1,12 @@
 package br.com.spotsales.utils
 
+import android.util.Base64
 import org.hashids.Hashids
 import org.mindrot.jbcrypt.BCrypt
 import java.util.*
+import javax.crypto.Cipher
+import javax.crypto.spec.IvParameterSpec
+import javax.crypto.spec.SecretKeySpec
 
 object SecurityUtils {
 
@@ -28,4 +32,27 @@ object SecurityUtils {
 
     fun generateUUID(): String = UUID.randomUUID().toString()
 
+    fun aesEncode(data: String, security: String): String? {
+        val iv = IvParameterSpec(security.toByteArray(Charsets.UTF_8))
+        val key = SecretKeySpec(security.toByteArray(Charsets.UTF_8), "AES")
+
+        val cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING")
+        cipher.init(Cipher.ENCRYPT_MODE, key, iv)
+
+        val textBytes = cipher.doFinal(data.toByteArray(Charsets.UTF_8))
+
+        return Base64.encodeToString(textBytes, Base64.DEFAULT)
+    }
+
+    fun aesDecode(data: String, security: String): String? {
+        val iv = IvParameterSpec(security.toByteArray(Charsets.UTF_8))
+        val key = SecretKeySpec(security.toByteArray(Charsets.UTF_8), "AES")
+
+        val cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING")
+        cipher.init(Cipher.DECRYPT_MODE, key, iv)
+
+        val textBytes = cipher.doFinal(Base64.decode(data, Base64.DEFAULT))
+
+        return textBytes.toString(Charsets.UTF_8)
+    }
 }
