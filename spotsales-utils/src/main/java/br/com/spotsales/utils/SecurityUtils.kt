@@ -1,7 +1,6 @@
 package br.com.spotsales.utils
 
 import android.util.Base64
-import android.util.Log
 import com.crashlytics.android.Crashlytics
 import org.hashids.Hashids
 import org.mindrot.jbcrypt.BCrypt
@@ -9,25 +8,33 @@ import java.util.*
 import javax.crypto.Cipher
 import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
+import kotlin.math.absoluteValue
 
 object SecurityUtils {
 
     fun hashidsEncode(code: String, salt: String): String {
-        val hashids = Hashids(salt)
-        val longList = code.toByteArray().map { i -> i.toLong() }.toLongArray()
-        return hashids.encode(*longList)
+        val minValue = Byte.MIN_VALUE.toLong().absoluteValue
+        val longList =
+            code.toByteArray()
+                .map { i ->
+                    if (i < 0) {
+                        minValue * 2 + i.toLong()
+                    } else {
+                        i.toLong()
+                    }
+                }
+                .toLongArray()
+
+        return Hashids(salt).encode(*longList)
     }
 
     fun hashidsDecode(code: String, salt: String): String {
-        val hashids = Hashids(salt)
-        val result = hashids.decode(code)
-        val decodedBytes = result.map { d -> d.toByte() }
+        val result = Hashids(salt).decode(code)
+        val bytes = ByteArray(result.size)
 
-        decodedBytes.forEach { a ->
-            print(String(listOf(a).toByteArray()))
-        }
+        (result.indices).forEach { bytes[it] = result[it].toByte() }
 
-        return String(decodedBytes.toByteArray())
+        return bytes.toString(Charsets.UTF_8)
     }
 
     fun bcryptEncode(password: String, salt: String): String = BCrypt.hashpw(password, salt)
