@@ -1,4 +1,4 @@
-package br.com.spotsales.spotsalestotem.ui.customs
+package br.com.spotsales.views.customs
 
 import android.content.Context
 import android.graphics.Typeface
